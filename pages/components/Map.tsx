@@ -8,7 +8,7 @@ export default function Map() {
       latitude: 1.35,
       zoom: 10
     }}
-    style={{width: 600, height: 400}}
+    style={{width: '100%', height: '100%', position: 'absolute'}}
     mapStyle="mapbox://styles/mapbox/streets-v9"
   />)
 }
