@@ -1,0 +1,41 @@
+enum Cuisine {
+  // Researched
+  BEIJING = "Beijing",
+  CHONGQING = "Chongqing",
+  ANHUI = "Anhui",
+  JIANGXI = "Jiangxi",
+  GUIZHOU = "Guizhou",
+  HEBEI = "Hebei",
+  JILIN = "Jilin",
+  SHANGHAI = "Shanghai",
+  TIANJIN = "Tianjin",
+  SHANXI = "Shanxi",
+  INNER_MONGOLIA = "Inner Mongolia",
+  HEILONGJIANG = "Heilongjiang",
+  JIANGSU = "Jiangsu",
+  ZHEJIANG = "Zhejiang",
+  FUJIAN = "Fujian",
+  HENAN = "Henan",
+  HUBEI = "Hubei",
+  GUANGDONG = "Guangdong",
+  GUANGXI = "Guangxi",
+  HAINAN = "Hainan",
+  YUNNAN = "Yunnan",
+  SHAANXI = "Shaanxi",
+  TIBET = "Tibet",
+  XINJIANG = "Xinjiang",
+  GANSU = "Gansu",
+  HONGKONG = "Hongkong",
+  MACAU = "Macau",
+  TAIWAN = "Taiwan",
+  // Research in progress
+  LIAONING = "Liaoning",
+  SHANDONG = "Shandong 鲁菜",
+  SICHUAN = "Sichuan",
+  HUNAN = "Hunan 湘菜",
+  // Not started
+  QINGHAI = "Qinghai",
+  NINGXIA = "Ningxia",
+}
+
+export default Cuisine;
