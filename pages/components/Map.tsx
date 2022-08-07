@@ -1,6 +1,6 @@
 import ReactMapGL, { Source, Layer } from "react-map-gl";
-import Cuisine from "../data/cuisines";
-import places, { Place } from "../data/places";
+import Cuisine from "../../data/cuisines";
+import places, { Place } from "../../data/places";
 
 function convertPlacesToGeoJSON(
   places: Place[]
