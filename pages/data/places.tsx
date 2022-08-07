@@ -5,10 +5,10 @@ type Place = {
   name: string;
   cuisine: Cuisine;
   dishes: Dish[];
-  address?: string;
+  address: string;
   latitude: number;
   longitude: number;
-  stars?: number;
+  stars: number;
   url?: string;
 };
 
@@ -22,6 +22,7 @@ const places: Place[] = [
     latitude: 1.2823122076071485,
     longitude: 103.84455316196886,
     url: "https://goo.gl/maps/SQLzMEfXHpRwkNpA9",
+    stars: 4.0,
   },
   {
     name: "Tianfu Renjia 天府人家",
@@ -31,6 +32,7 @@ const places: Place[] = [
     latitude: 1.2880873715413441,
     longitude: 103.82700809530772,
     url: "https://goo.gl/maps/DnZ7zfeYwifocY7CA",
+    stars: 4.4,
   },
   // Shandong
   {
@@ -46,6 +48,7 @@ const places: Place[] = [
     latitude: 1.2879139165995381,
     longitude: 103.84931912794099,
     url: "https://g.page/hand-in-hand-shandong-restaurant?share",
+    stars: 3.6,
   },
   // Sichuan
   {
@@ -55,6 +58,8 @@ const places: Place[] = [
     address: "84 Marine Parade Central, #01-49, Singapore 440084",
     latitude: 1.3022430318387233,
     longitude: 103.90656025762591,
+    url: "https://goo.gl/maps/55pPjmJjeiH8JnCL7",
+    stars: 3.8,
   },
   {
     name: "Jin Jin Eating House 金金餐室",
@@ -127,6 +132,7 @@ const places: Place[] = [
     url: "https://goo.gl/maps/SLFPFv9iUr7VHGoi9",
     latitude: 1.2830998049409224,
     longitude: 103.84348443827163,
+    stars: 4.2,
   },
   {
     name: "湘香 Xiang's Signature Hunan Cuisine",
