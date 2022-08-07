@@ -6,7 +6,7 @@ export default function Map() {
     initialViewState={{
       longitude: 103.83,
       latitude: 1.35,
-      zoom: 10
+      zoom: 12
     }}
     style={{width: '100%', height: '100%', position: 'absolute'}}
     mapStyle="mapbox://styles/mapbox/streets-v9"
