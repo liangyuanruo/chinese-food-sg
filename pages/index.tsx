@@ -1,8 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  const Map = dynamic(() => import("./components/Map"), {
+    suspense: true,
+    ssr: false
+  })
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +18,9 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.main}>
-        Map area
+        <Suspense fallback={`loading...`}>
+          <Map />
+        </Suspense>
       </div>
 
       <footer className={styles.footer}>
