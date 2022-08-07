@@ -1,7 +1,7 @@
 import Cuisine from "./cuisines";
 import Dish from "./dishes";
 
-type Place = {
+export type Place = {
   name: string;
   cuisine: Cuisine;
   dishes: Dish[];
