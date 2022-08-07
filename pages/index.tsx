@@ -22,10 +22,6 @@ const Home: NextPage = () => {
           <Map />
         </Suspense>
       </div>
-
-      <footer className={styles.footer}>
-        Built by @liangyuanruo
-      </footer>
     </div>
   )
 }
