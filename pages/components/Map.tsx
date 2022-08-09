@@ -20,6 +20,12 @@ export default function Map() {
     // nothing of note was clicked on
     if (!e.features?.length) return;
 
+    // close previous popup if open
+    if (showPopup) {
+      setShowPopup(false);
+      return;
+    }
+
     //open popup with all the information
     const [feature] = e.features;
     const { properties: p } = feature;
@@ -38,6 +44,7 @@ export default function Map() {
       longitude: p?.longitude,
     });
   }
+
   return (
     <ReactMapGL
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
