@@ -1,4 +1,4 @@
-import ReactMapGL, { Source, Layer } from "react-map-gl";
+import ReactMapGL, { Source, Layer, MapLayerMouseEvent } from "react-map-gl";
 
 import Cuisine from "../../data/cuisines";
 import Region from "../../data/regions";
@@ -64,13 +64,25 @@ function convertPlacesToGeoJSON(
         type: "Feature",
         geometry: { type: "Point", coordinates: [p.longitude, p.latitude] },
         properties: {
+          name: p.name,
           cuisine: p.cuisine,
+          dishes: p.dishes,
+          address: p.address,
+          stars: p.stars,
           group: getCuisineGroup(p.cuisine),
           icon: "restaurant",
+          google_map_url: p.google_map_url,
         },
       };
     }),
   };
+}
+
+function showMore(e: MapLayerMouseEvent) {
+  if (e.features?.length) {
+    const [feature] = e.features;
+    console.log(feature.properties);
+  }
 }
 
 export default function Map() {
@@ -84,6 +96,8 @@ export default function Map() {
       }}
       style={{ width: "100%", height: "100%", position: "absolute" }}
       mapStyle="mapbox://styles/liangyuanruo/cl6lm1aiz000n14msstcj6oc6"
+      interactiveLayerIds={["places-layer"]}
+      onClick={showMore}
     >
       <Source
         id="places-source"
