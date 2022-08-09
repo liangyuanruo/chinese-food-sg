@@ -134,6 +134,7 @@ export default function Map() {
           latitude={popupProps?.latitude!}
           longitude={popupProps?.longitude!}
           anchor="bottom"
+          closeOnMove={true}
           onClose={() => {
             setShowPopup(false);
           }}
