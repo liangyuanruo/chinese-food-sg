@@ -1,10 +1,16 @@
-import ReactMapGL, { Source, Layer, MapLayerMouseEvent } from "react-map-gl";
+import { useState } from "react";
+import ReactMapGL, {
+  Source,
+  Layer,
+  MapLayerMouseEvent,
+  Popup,
+} from "react-map-gl";
 
 import Cuisine from "../../data/cuisines";
 import Region from "../../data/regions";
 import places, { Place } from "../../data/places";
 
-function getCuisineGroup(cuisine: Cuisine) {
+function getCuisineRegion(cuisine: Cuisine) {
   switch (cuisine) {
     case Cuisine.QINGHAI:
     case Cuisine.GANSU:
@@ -54,9 +60,14 @@ function getCuisineGroup(cuisine: Cuisine) {
   }
 }
 
+type PlaceGeoJSONProperties = Place & {
+  region: Region;
+  icon: string;
+};
+
 function convertPlacesToGeoJSON(
   places: Place[]
-): GeoJSON.FeatureCollection<GeoJSON.Point> {
+): GeoJSON.FeatureCollection<GeoJSON.Point, PlaceGeoJSONProperties> {
   return {
     type: "FeatureCollection",
     features: places.map((p) => {
@@ -69,23 +80,41 @@ function convertPlacesToGeoJSON(
           dishes: p.dishes,
           address: p.address,
           stars: p.stars,
-          group: getCuisineGroup(p.cuisine),
+          region: getCuisineRegion(p.cuisine),
           icon: "restaurant",
           google_map_url: p.google_map_url,
+          latitude: p.latitude,
+          longitude: p.longitude,
         },
       };
     }),
   };
 }
 
-function showMore(e: MapLayerMouseEvent) {
-  if (e.features?.length) {
-    const [feature] = e.features;
-    console.log(feature.properties);
-  }
-}
-
 export default function Map() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupProps, setPopupProps] = useState<PlaceGeoJSONProperties>();
+
+  function showMore(e: MapLayerMouseEvent) {
+    if (e.features?.length) {
+      const [feature] = e.features;
+      const { properties: p } = feature;
+      console.log(p);
+      setPopupProps({
+        name: p?.name,
+        cuisine: p?.cuisine,
+        dishes: p?.dishes,
+        address: p?.address,
+        stars: p?.stars,
+        region: p?.region,
+        icon: p?.icon,
+        google_map_url: p?.google_map_url,
+        latitude: p?.latitude,
+        longitude: p?.longitude,
+      });
+      setShowPopup(true);
+    }
+  }
   return (
     <ReactMapGL
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
@@ -99,6 +128,19 @@ export default function Map() {
       interactiveLayerIds={["places-layer"]}
       onClick={showMore}
     >
+      {" "}
+      {showPopup && (
+        <Popup
+          latitude={popupProps?.latitude!}
+          longitude={popupProps?.longitude!}
+          anchor="bottom"
+          onClose={() => {
+            setShowPopup(false);
+          }}
+        >
+          {popupProps?.name}
+        </Popup>
+      )}
       <Source
         id="places-source"
         type="geojson"
