@@ -88,12 +88,26 @@ export default function Map() {
             "symbol-z-order": "source",
             "text-field": "{name}",
             "text-allow-overlap": true,
-            "text-variable-anchor": ["top", "bottom"],
+            "text-variable-anchor": ["top", "bottom", "left", "right"],
             "text-justify": "auto",
-            "text-size": 12,
+            "text-optional": true,
+            "text-size": {
+              stops: [
+                [0, 0],
+                [15, 0],
+                [16, 13],
+              ],
+            },
           }}
           paint={{
             "text-color": "#ffffff",
+            "text-opacity": {
+              stops: [
+                [0, 0],
+                [15, 0],
+                [16, 1],
+              ],
+            },
           }}
         />
       </Source>
