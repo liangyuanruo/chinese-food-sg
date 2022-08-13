@@ -83,7 +83,7 @@ export default function Map() {
           layout={{
             "icon-image": "{icon}",
             "icon-allow-overlap": true,
-            "icon-size": 1.3,
+            "icon-size": 0.05,
           }}
         />
       </Source>

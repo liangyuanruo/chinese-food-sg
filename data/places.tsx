@@ -10,6 +10,7 @@ export type Place = {
   longitude: number;
   stars: number;
   google_map_url: string;
+  recommended?: true;
 };
 
 const places: Place[] = [
@@ -90,6 +91,7 @@ const places: Place[] = [
     google_map_url: "https://g.page/oldchengdu_sg?share",
     latitude: 1.2838521387384787,
     longitude: 103.84371166746612,
+    recommended: true,
   },
   {
     name: "老四川豆花庄",
@@ -125,6 +127,7 @@ const places: Place[] = [
     latitude: 1.2839477911621175,
     longitude: 103.84421246100491,
     google_map_url: "https://goo.gl/maps/cWCXtu13Dwd1u7ft9",
+    recommended: true,
   },
   {
     name: "Chilli Up Hunan Cuisine 天天湘上湖南菜",

@@ -57,6 +57,11 @@ export function getCuisineRegion(cuisine: Cuisine) {
   }
 }
 
+function computeIcon(p: Place): string {
+  if (p.recommended) return "custom-star";
+  return "custom-marker-red";
+}
+
 export function convertPlacesToGeoJSON(
   places: Place[]
 ): GeoJSON.FeatureCollection<GeoJSON.Point, PlaceGeoJSONProperties> {
@@ -73,7 +78,7 @@ export function convertPlacesToGeoJSON(
           address: p.address,
           stars: p.stars,
           region: getCuisineRegion(p.cuisine),
-          icon: "restaurant", // TODO: different icons depending on quality
+          icon: computeIcon(p), // TODO: different icons depending on quality
           google_map_url: p.google_map_url,
           latitude: p.latitude,
           longitude: p.longitude,
