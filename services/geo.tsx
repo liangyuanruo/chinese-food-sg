@@ -90,7 +90,7 @@ export function convertPlacesToGeoJSON(
           icon,
           iconSize,
           symbolSortKey,
-          google_map_url: p.google_map_url,
+          googleMapUrl: p.googleMapUrl,
           latitude: p.latitude,
           longitude: p.longitude,
         },

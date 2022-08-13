@@ -39,7 +39,7 @@ export default function Map() {
       stars: p?.stars,
       region: p?.region,
       icon: p?.icon,
-      google_map_url: p?.google_map_url,
+      googleMapUrl: p?.googleMapUrl,
       latitude: p?.latitude,
       longitude: p?.longitude,
     });
