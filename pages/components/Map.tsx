@@ -39,7 +39,7 @@ export default function Map() {
       stars: p?.stars,
       region: p?.region,
       icon: p?.icon,
-      google_map_url: p?.google_map_url,
+      googleMapUrl: p?.googleMapUrl,
       latitude: p?.latitude,
       longitude: p?.longitude,
     });
@@ -83,7 +83,31 @@ export default function Map() {
           layout={{
             "icon-image": "{icon}",
             "icon-allow-overlap": true,
-            "icon-size": 1.3,
+            "icon-size": ["get", "iconSize"],
+            "symbol-sort-key": ["get", "symbolSortKey"],
+            "symbol-z-order": "source",
+            "text-field": "{name}",
+            "text-allow-overlap": true,
+            "text-variable-anchor": ["top", "bottom", "left", "right"],
+            "text-justify": "auto",
+            "text-optional": true,
+            "text-size": {
+              stops: [
+                [0, 0],
+                [15, 0],
+                [16, 13],
+              ],
+            },
+          }}
+          paint={{
+            "text-color": "#ffffff",
+            "text-opacity": {
+              stops: [
+                [0, 0],
+                [15, 0],
+                [16, 1],
+              ],
+            },
           }}
         />
       </Source>
