@@ -83,7 +83,8 @@ export default function Map() {
           layout={{
             "icon-image": "{icon}",
             "icon-allow-overlap": true,
-            "icon-size": ["get", "iconSize"], // TODO: fix huge icons from FlatIcon
+            "icon-size": ["get", "iconSize"],
+            "symbol-sort-key": ["get", "symbolSortKey"],
           }}
         />
       </Source>
