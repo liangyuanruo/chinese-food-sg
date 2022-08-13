@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactMapGL, {
+  GeolocateControl,
   Source,
   Layer,
   MapLayerMouseEvent,
@@ -58,7 +59,7 @@ export default function Map() {
       interactiveLayerIds={["places-layer"]}
       onClick={showMore}
     >
-      {" "}
+      <GeolocateControl trackUserLocation={true} showUserHeading={true} />
       {showPopup && (
         <Popup
           latitude={popupProps?.latitude!}
