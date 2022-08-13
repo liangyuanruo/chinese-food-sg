@@ -85,8 +85,11 @@ export default function Map() {
             "icon-allow-overlap": true,
             "icon-size": ["get", "iconSize"],
             "symbol-sort-key": ["get", "symbolSortKey"],
+            "symbol-z-order": "source",
             "text-field": "{name}",
-            "text-anchor": "top",
+            "text-allow-overlap": true,
+            "text-variable-anchor": ["top", "bottom"],
+            "text-justify": "auto",
             "text-size": 12,
           }}
           paint={{
