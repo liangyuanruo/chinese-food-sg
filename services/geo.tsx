@@ -57,9 +57,15 @@ export function getCuisineRegion(cuisine: Cuisine) {
   }
 }
 
-function computeIcon(p: Place): string {
-  if (p.recommended) return "custom-star";
-  return "custom-marker-red";
+type IconInfo = [string, number];
+/**
+ * Computes icon-image name and icon-size properties for ReactMapGL layer
+ * @param p Place
+ * @returns IconInfo
+ */
+function computeIcon(p: Place): IconInfo {
+  if (p.recommended) return ["custom-star", 0.05];
+  return ["custom-marker-red", 0.05];
 }
 
 export function convertPlacesToGeoJSON(
@@ -68,6 +74,7 @@ export function convertPlacesToGeoJSON(
   return {
     type: "FeatureCollection",
     features: places.map((p) => {
+      const [icon, iconSize] = computeIcon(p);
       return {
         type: "Feature",
         geometry: { type: "Point", coordinates: [p.longitude, p.latitude] },
@@ -78,7 +85,8 @@ export function convertPlacesToGeoJSON(
           address: p.address,
           stars: p.stars,
           region: getCuisineRegion(p.cuisine),
-          icon: computeIcon(p), // TODO: different icons depending on quality
+          icon,
+          iconSize,
           google_map_url: p.google_map_url,
           latitude: p.latitude,
           longitude: p.longitude,
