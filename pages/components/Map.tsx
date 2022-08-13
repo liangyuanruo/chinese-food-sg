@@ -85,6 +85,12 @@ export default function Map() {
             "icon-allow-overlap": true,
             "icon-size": ["get", "iconSize"],
             "symbol-sort-key": ["get", "symbolSortKey"],
+            "text-field": "{name}",
+            "text-anchor": "top",
+            "text-size": 12,
+          }}
+          paint={{
+            "text-color": "#ffffff",
           }}
         />
       </Source>
