@@ -1,4 +1,5 @@
-import { Badge, Box, Text } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
+import { Badge, Box, Divider, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
@@ -72,8 +73,8 @@ export default function Map() {
           }}
         >
           <Box maxW="sm" borderRadius="lg" overflow="hidden">
-            <Box p={1}>
-              <Box display="flex" alignItems="baseline">
+            <Box margin={1}>
+              <Box display="flex" alignItems="baseline" margin={1}>
                 <Badge borderRadius="full" px="2" colorScheme="teal">
                   {popupProps?.cuisine}
                 </Badge>
@@ -86,6 +87,24 @@ export default function Map() {
               >
                 {popupProps?.name}
               </Text>
+            </Box>
+            <Divider />
+            <Text fontWeight="normal" fontSize="xs" margin={1}>
+              Google Rating
+            </Text>
+            <Box display="flex" mt="2" alignItems="center">
+              {popupProps?.stars}{" "}
+              {Array(5)
+                .fill("")
+                .map((_, i) => {
+                  const stars = popupProps?.stars ?? 0;
+                  return (
+                    <StarIcon
+                      key={i}
+                      color={i < stars ? "teal.500" : "gray.300"}
+                    />
+                  );
+                })}
             </Box>
           </Box>
         </Popup>
