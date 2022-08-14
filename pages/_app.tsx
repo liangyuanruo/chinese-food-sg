@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ChakraProvider, extendTheme, Theme } from "@chakra-ui/react";
+import { extendTheme, Theme } from "@chakra-ui/react";
+
+import { Chakra } from "./Chakra";
 
 const customTheme: Partial<Theme> = {
   config: {
@@ -11,12 +13,12 @@ const customTheme: Partial<Theme> = {
 
 const theme = extendTheme(customTheme);
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
+    <Chakra theme={theme} cookies={pageProps.cookies}>
       <Component {...pageProps} />
-    </ChakraProvider>
+    </Chakra>
   );
 }
 
-export default MyApp;
+export { getServerSideProps } from "./Chakra";
