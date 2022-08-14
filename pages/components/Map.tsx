@@ -1,5 +1,5 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { Badge, Box, Divider, Heading, Text } from "@chakra-ui/react";
+import { Badge, Box, Divider, Heading, Link, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
@@ -8,6 +8,7 @@ import ReactMapGL, {
   MapLayerMouseEvent,
   Popup,
 } from "react-map-gl";
+import NextLink from "next/link";
 
 import places from "../../data/places";
 import {
@@ -87,7 +88,11 @@ export default function Map() {
               >
                 {popupProps?.name}
               </Heading>
-              <Text fontWeight="normal">{popupProps?.address}</Text>
+              <Text fontWeight="normal">
+                <NextLink href={popupProps?.googleMapUrl!} passHref>
+                  <Link>{popupProps?.address}</Link>
+                </NextLink>
+              </Text>
             </Box>
             <Divider />
             <Heading fontWeight="normal" fontSize="xs" marginTop={2}>
