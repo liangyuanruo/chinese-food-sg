@@ -100,7 +100,7 @@ export default function Map() {
                 {popupProps?.name}
               </Heading>
               {/* Address */}
-              <Text fontWeight="normal">
+              <Text fontWeight="normal" textDecorationLine="underline">
                 <NextLink href={popupProps?.googleMapUrl!} passHref>
                   <Link>{popupProps?.address}</Link>
                 </NextLink>
