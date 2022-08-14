@@ -1,5 +1,5 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { Badge, Box, Divider, Text } from "@chakra-ui/react";
+import { Badge, Box, Divider, Heading, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
@@ -79,20 +79,20 @@ export default function Map() {
                   {popupProps?.cuisine}
                 </Badge>
               </Box>
-              <Text
+              <Heading
                 fontWeight="semibold"
                 letterSpacing="wide"
                 textTransform="uppercase"
                 fontSize="xs"
               >
                 {popupProps?.name}
-              </Text>
+              </Heading>
               <Text fontWeight="normal">{popupProps?.address}</Text>
             </Box>
             <Divider />
-            <Text fontWeight="normal" fontSize="xs" marginTop={2}>
+            <Heading fontWeight="normal" fontSize="xs" marginTop={2}>
               Google Rating
-            </Text>
+            </Heading>
             <Box display="flex" mt="2" alignItems="center" margin={0}>
               <Text fontWeight="light" marginRight={1}>
                 {popupProps?.stars}
