@@ -9,7 +9,7 @@ import {
   ListItem,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
   Source,
@@ -128,18 +128,22 @@ export default function Map() {
                 })}
             </Box>
             {/* Dishes to order */}
-            <Heading fontWeight="medium" fontSize="xs" marginTop={2}>
-              Dishes to order
-            </Heading>
-            <List>
-              {popupProps?.dishes.map((dish, i) => (
-                <ListItem key={i}>
-                  <Text fontWeight="normal" fontSize="xs">
-                    {dish}
-                  </Text>
-                </ListItem>
-              ))}
-            </List>
+            {popupProps?.dishes?.length! > 0 && (
+              <Fragment>
+                <Heading fontWeight="medium" fontSize="xs" marginTop={2}>
+                  Dishes to order
+                </Heading>
+                <List>
+                  {popupProps?.dishes.map((dish, i) => (
+                    <ListItem key={i}>
+                      <Text fontWeight="normal" fontSize="xs">
+                        {dish}
+                      </Text>
+                    </ListItem>
+                  ))}
+                </List>
+              </Fragment>
+            )}
           </Box>
         </Popup>
       )}
