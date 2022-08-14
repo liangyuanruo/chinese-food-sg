@@ -1,5 +1,14 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { Badge, Box, Divider, Heading, Link, Text } from "@chakra-ui/react";
+import {
+  Badge,
+  Box,
+  Divider,
+  Heading,
+  Link,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
@@ -38,7 +47,7 @@ export default function Map() {
     setPopupProps({
       name: p?.name,
       cuisine: p?.cuisine,
-      dishes: p?.dishes,
+      dishes: JSON.parse(p?.dishes),
       address: p?.address,
       stars: p?.stars,
       region: p?.region,
@@ -75,11 +84,13 @@ export default function Map() {
         >
           <Box maxW="sm" borderRadius="lg" overflow="hidden">
             <Box margin={1}>
+              {/* Badge */}
               <Box display="flex" alignItems="baseline" margin={1}>
                 <Badge borderRadius="full" px="2" colorScheme="teal">
                   {popupProps?.cuisine}
                 </Badge>
               </Box>
+              {/* Name */}
               <Heading
                 fontWeight="semibold"
                 letterSpacing="wide"
@@ -88,6 +99,7 @@ export default function Map() {
               >
                 {popupProps?.name}
               </Heading>
+              {/* Address */}
               <Text fontWeight="normal">
                 <NextLink href={popupProps?.googleMapUrl!} passHref>
                   <Link>{popupProps?.address}</Link>
@@ -95,7 +107,8 @@ export default function Map() {
               </Text>
             </Box>
             <Divider />
-            <Heading fontWeight="normal" fontSize="xs" marginTop={2}>
+            {/* Ratings */}
+            <Heading fontWeight="medium" fontSize="xs" marginTop={2}>
               Google Rating
             </Heading>
             <Box display="flex" mt="2" alignItems="center" margin={0}>
@@ -114,6 +127,19 @@ export default function Map() {
                   );
                 })}
             </Box>
+            {/* Dishes to order */}
+            <Heading fontWeight="medium" fontSize="xs" marginTop={2}>
+              Dishes to order
+            </Heading>
+            <List>
+              {popupProps?.dishes.map((dish, i) => (
+                <ListItem key={i}>
+                  <Text fontWeight="normal" fontSize="xs">
+                    {dish}
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
           </Box>
         </Popup>
       )}
