@@ -87,6 +87,7 @@ export default function Map() {
               >
                 {popupProps?.name}
               </Text>
+              <Text fontWeight="normal">{popupProps?.address}</Text>
             </Box>
             <Divider />
             <Text fontWeight="normal" fontSize="xs" marginTop={2}>
