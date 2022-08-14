@@ -89,11 +89,13 @@ export default function Map() {
               </Text>
             </Box>
             <Divider />
-            <Text fontWeight="normal" fontSize="xs" margin={1}>
+            <Text fontWeight="normal" fontSize="xs" marginTop={2}>
               Google Rating
             </Text>
-            <Box display="flex" mt="2" alignItems="center">
-              {popupProps?.stars}{" "}
+            <Box display="flex" mt="2" alignItems="center" margin={0}>
+              <Text fontWeight="light" marginRight={1}>
+                {popupProps?.stars}
+              </Text>
               {Array(5)
                 .fill("")
                 .map((_, i) => {
