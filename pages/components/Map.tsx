@@ -1,4 +1,15 @@
-import { useState } from "react";
+import { StarIcon } from "@chakra-ui/icons";
+import {
+  Badge,
+  Box,
+  Divider,
+  Heading,
+  Link,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
+import { Fragment, useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
   Source,
@@ -6,6 +17,7 @@ import ReactMapGL, {
   MapLayerMouseEvent,
   Popup,
 } from "react-map-gl";
+import NextLink from "next/link";
 
 import places from "../../data/places";
 import {
@@ -35,7 +47,7 @@ export default function Map() {
     setPopupProps({
       name: p?.name,
       cuisine: p?.cuisine,
-      dishes: p?.dishes,
+      dishes: JSON.parse(p?.dishes),
       address: p?.address,
       stars: p?.stars,
       region: p?.region,
@@ -70,7 +82,69 @@ export default function Map() {
             setShowPopup(false);
           }}
         >
-          {popupProps?.name}
+          <Box maxW="sm" borderRadius="lg" overflow="hidden">
+            <Box margin={1}>
+              {/* Badge */}
+              <Box display="flex" alignItems="baseline" margin={1}>
+                <Badge borderRadius="full" px="2" colorScheme="teal">
+                  {popupProps?.cuisine}
+                </Badge>
+              </Box>
+              {/* Name */}
+              <Heading
+                fontWeight="semibold"
+                letterSpacing="wide"
+                textTransform="uppercase"
+                fontSize="xs"
+              >
+                {popupProps?.name}
+              </Heading>
+              {/* Address */}
+              <Text fontWeight="normal" textDecorationLine="underline">
+                <NextLink href={popupProps?.googleMapUrl!} passHref>
+                  <Link>{popupProps?.address}</Link>
+                </NextLink>
+              </Text>
+            </Box>
+            <Divider />
+            {/* Ratings */}
+            <Heading fontWeight="medium" fontSize="xs" marginTop={2}>
+              Google Rating
+            </Heading>
+            <Box display="flex" mt="2" alignItems="center" margin={0}>
+              <Text fontWeight="light" marginRight={1}>
+                {popupProps?.stars}
+              </Text>
+              {Array(5)
+                .fill("")
+                .map((_, i) => {
+                  const stars = popupProps?.stars ?? 0;
+                  return (
+                    <StarIcon
+                      key={i}
+                      color={i < stars ? "teal.500" : "gray.300"}
+                    />
+                  );
+                })}
+            </Box>
+            {/* Dishes to order */}
+            {popupProps?.dishes?.length! > 0 && (
+              <Fragment>
+                <Heading fontWeight="medium" fontSize="xs" marginTop={2}>
+                  Dishes to order
+                </Heading>
+                <List>
+                  {popupProps?.dishes.map((dish, i) => (
+                    <ListItem key={i}>
+                      <Text fontWeight="normal" fontSize="xs">
+                        {dish}
+                      </Text>
+                    </ListItem>
+                  ))}
+                </List>
+              </Fragment>
+            )}
+          </Box>
         </Popup>
       )}
       <Source

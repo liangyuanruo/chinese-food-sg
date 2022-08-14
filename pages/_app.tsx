@@ -1,8 +1,24 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { extendTheme, Theme } from "@chakra-ui/react";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import Chakra from "./Chakra";
+
+const customTheme: Partial<Theme> = {
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: false,
+  },
+};
+
+const theme = extendTheme(customTheme);
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <Chakra theme={theme} cookies={pageProps.cookies}>
+      <Component {...pageProps} />
+    </Chakra>
+  );
 }
 
-export default MyApp
+export { getServerSideProps } from "./Chakra";
