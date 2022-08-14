@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { extendTheme, Theme } from "@chakra-ui/react";
 
-import { Chakra } from "./Chakra";
+import Chakra from "./Chakra";
 
 const customTheme: Partial<Theme> = {
   config: {
