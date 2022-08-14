@@ -1,3 +1,4 @@
+import { Badge, Box, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import ReactMapGL, {
   GeolocateControl,
@@ -70,7 +71,23 @@ export default function Map() {
             setShowPopup(false);
           }}
         >
-          {popupProps?.name}
+          <Box maxW="sm" borderRadius="lg" overflow="hidden">
+            <Box p={1}>
+              <Box display="flex" alignItems="baseline">
+                <Badge borderRadius="full" px="2" colorScheme="teal">
+                  {popupProps?.cuisine}
+                </Badge>
+              </Box>
+              <Text
+                fontWeight="semibold"
+                letterSpacing="wide"
+                textTransform="uppercase"
+                fontSize="xs"
+              >
+                {popupProps?.name}
+              </Text>
+            </Box>
+          </Box>
         </Popup>
       )}
       <Source
