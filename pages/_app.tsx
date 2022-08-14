@@ -6,7 +6,7 @@ import Chakra from "./Chakra";
 
 const customTheme: Partial<Theme> = {
   config: {
-    initialColorMode: "dark",
+    initialColorMode: "light",
     useSystemColorMode: false,
   },
 };
