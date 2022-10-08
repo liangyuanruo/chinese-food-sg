@@ -27,6 +27,18 @@ enum Dish {
   // Hunan
   STEAMED_FISH_HEAD_WITH_DICED_HOT_RED_PEPPERS = "Steamed Fish Head with Diced Hot Red Peppers 剁椒鱼头",
   FARMHOUSE_FRIED_PORK = "Farmhouse Fried Pork 农家小炒肉",
+
+  // Qinghai
+  STIR_FRIED_DOUGH_SLICES_WITH_MUTTON = "Stir-Fried Dough Slices with Mutton 羊肉炒面片",
+  BEEF_NOODLES = "Beef Noodles 牛肉面",
+
+  // Ningxia
+  STEAMED_LAMB = "Steamed Lamb 清蒸羊羔肉",
+  HAND_PULLED_LAMB = "Hand-Pulled Lamb 手抓羊肉",
+
+  // Beijing
+  BEIJING_ROAST_DUCK = "Beijing Roast Duck 北京烤鸭",
+  YANJING_BEER = "Yanjing beer",
 }
 
 export default Dish;
