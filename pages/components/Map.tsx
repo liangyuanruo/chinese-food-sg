@@ -62,9 +62,9 @@ export default function Map() {
     <ReactMapGL
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       initialViewState={{
-        longitude: 103.83,
-        latitude: 1.35,
-        zoom: 12,
+        latitude: 1.2931913543829552,
+        longitude: 103.84697074696969,
+        zoom: 10,
       }}
       style={{ width: "100%", height: "100%", position: "absolute" }}
       mapStyle="mapbox://styles/liangyuanruo/cl6lm1aiz000n14msstcj6oc6"
