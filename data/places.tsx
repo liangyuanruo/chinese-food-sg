@@ -159,6 +159,17 @@ const places: Place[] = [
     longitude: 103.84363804166628,
     googleMapUrl: "https://goo.gl/maps/3Nd7srcNj5t3ovGPA",
   },
+  // Qinghai
+  {
+    name: "Alijiang 阿里疆",
+    cuisine: Cuisine.QINGHAI,
+    dishes: [],
+    stars: 4.0,
+    address: "1 HarbourFront Walk, #03-11 VivoCity, Singapore 098585",
+    latitude: 1.2635020292162096,
+    longitude: 103.82110991526599,
+    googleMapUrl: "https://goo.gl/maps/KSKKvRZEEWXn3QSb8",
+  },
 ];
 
 export default places;
